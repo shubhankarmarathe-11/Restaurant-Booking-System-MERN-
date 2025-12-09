@@ -1,0 +1,185 @@
+{
+  "indianFood": [
+    {
+      "id": "1",
+      "name": "Butter Chicken",
+      "imgUrl": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500&auto=format&fit=crop&q=60",
+      "price": 550,
+      "alt": "Butter Chicken image"
+    },
+    {
+      "id": "2",
+      "name": "Paneer Tikka",
+      "imgUrl": "https://cdn.pixabay.com/photo/2018/12/04/16/49/tandoori-3856045_640.jpg",
+      "price": 200,
+      "alt": "Paneer Tikka image"
+    },
+    {
+      "id": "3",
+      "name": "Masala Dosa",
+      "imgUrl": "https://cdn.pixabay.com/photo/2022/01/27/07/34/masala-dosa-6971358_640.jpg",
+      "price": 60,
+      "alt": "Masala Dosa image"
+    },
+    {
+      "id": "4",
+      "name": "Chole Bhature",
+      "imgUrl": "https://cdn.pixabay.com/photo/2016/03/21/21/33/chana-masala-1271639_1280.jpg",
+      "price": 80,
+      "alt": "Chole Bhature image"
+    },
+    {
+      "id": "5",
+      "name": "Butter naan",
+      "imgUrl": "https://cdn.pixabay.com/photo/2017/08/29/04/22/indian-2692073_640.jpg",
+      "price": 30,
+      "alt": "Butter naan image"
+    },
+    {
+      "id": "6",
+      "name": "Chicken Biryani",
+      "imgUrl": "https://cdn.pixabay.com/photo/2023/10/19/11/18/biryani-8326234_1280.jpg",
+      "price": 600,
+      "alt": "Chicken Biryani image"
+    },
+    {
+      "id": "7",
+      "name": "Dal Tadka",
+      "imgUrl": "https://images.unsplash.com/photo-1626500154744-e4b394ffea16?w=500&auto=format&fit=crop&q=60",
+      "price": 100,
+      "alt": "Dal Tadka image"
+    },
+    {
+      "id": "8",
+      "name": "Veg Pulao",
+      "imgUrl": "https://cdn.pixabay.com/photo/2021/09/25/18/54/dish-6655595_640.jpg",
+      "price": 120,
+      "alt": "Veg Pulao image"
+    },
+    {
+      "id": "9",
+      "name": "Palak Paneer",
+      "imgUrl": "https://cdn.pixabay.com/photo/2022/03/02/12/42/paneer-7043102_640.jpg",
+      "price": 350,
+      "alt": "Palak Paneer image"
+    },
+    {
+      "id": "10",
+      "name": "Chicken Tandoori",
+      "imgUrl": "https://cdn.pixabay.com/photo/2020/08/07/07/03/chicken-5469835_640.jpg",
+      "price": 600,
+      "alt": "Chicken Tandoori image"
+    }
+  ],
+
+  "fastFood": [
+    {
+      "id": "1",
+      "name": "Veg Burger",
+      "imgUrl": "https://cdn.pixabay.com/photo/2022/04/25/06/16/burger-7155160_640.jpg",
+      "price": 350,
+      "alt": "Veg Burger image"
+    },
+    {
+      "id": "2",
+      "name": "Cheese Pizza",
+      "imgUrl": "https://cdn.pixabay.com/photo/2020/06/17/21/46/pizza-5311269_640.jpg",
+      "price": 550,
+      "alt": "Cheese Pizza image"
+    },
+    {
+      "id": "3",
+      "name": "Chicken Wing",
+      "imgUrl": "https://cdn.pixabay.com/photo/2019/09/10/03/10/barbecue-4465145_640.jpg",
+      "price": 450,
+      "alt": "Chicken Wing image"
+    },
+    {
+      "id": "4",
+      "name": "French Fries",
+      "imgUrl": "https://cdn.pixabay.com/photo/2016/11/20/09/06/bowl-1842294_640.jpg",
+      "price": 250,
+      "alt": "French Fries image"
+    },
+    {
+      "id": "5",
+      "name": "Schezwan Noodles",
+      "imgUrl": "https://images.unsplash.com/photo-1617622141675-d3005b9067c5?w=500&auto=format&fit=crop&q=60",
+      "price": 150,
+      "alt": "Schezwan Noodles image"
+    },
+    {
+      "id": "6",
+      "name": "Momo",
+      "imgUrl": "https://cdn.pixabay.com/photo/2021/01/25/16/36/momo-5948840_640.jpg",
+      "price": 120,
+      "alt": "Momo image"
+    },
+    {
+      "id": "7",
+      "name": "Garlic Bread",
+      "imgUrl": "https://images.unsplash.com/photo-1573140401552-3fab0b24306f?w=500&auto=format&fit=crop&q=60",
+      "price": 100,
+      "alt": "Garlic Bread image"
+    },
+    {
+      "id": "8",
+      "name": "Sandwich",
+      "imgUrl": "https://images.unsplash.com/photo-1619096252214-ef06c45683e3?w=500&auto=format&fit=crop&q=60",
+      "price": 50,
+      "alt": "Sandwich image"
+    },
+    {
+      "id": "9",
+      "name": "Veg Roll",
+      "imgUrl": "https://images.unsplash.com/photo-1620167789273-d66c723fe754?w=500&auto=format&fit=crop&q=60",
+      "price": 100,
+      "alt": "Veg Roll image"
+    },
+    {
+      "id": "10",
+      "name": "Nachos",
+      "imgUrl": "https://images.unsplash.com/photo-1619604107557-b5321217aee7?w=500&auto=format&fit=crop&q=60",
+      "price": 100,
+      "alt": "Nachos image"
+    }
+  ],
+
+  "desserts": [
+    {
+      "id": "1",
+      "name": "Gulab Jamun",
+      "imgUrl": "https://cdn.pixabay.com/photo/2014/06/18/15/48/indian-sweet-371357_640.jpg",
+      "price": 250,
+      "alt": "Gulab Jamun image"
+    },
+    {
+      "id": "2",
+      "name": "Rasgulla",
+      "imgUrl": "https://cdn.pixabay.com/photo/2014/12/22/12/33/sweets-577230_1280.jpg",
+      "price": 350,
+      "alt": "Rasgulla image"
+    },
+    {
+      "id": "3",
+      "name": "Ice Cream Sundae",
+      "imgUrl": "https://images.unsplash.com/photo-1514849302-984523450cf4?w=500&auto=format&fit=crop&q=60",
+      "price": 150,
+      "alt": "Ice Cream Sundae image"
+    },
+    {
+      "id": "4",
+      "name": "Chocolate Cake",
+      "imgUrl": "https://cdn.pixabay.com/photo/2017/01/23/08/45/cake-2001781_640.jpg",
+      "price": 300,
+      "alt": "Chocolate Cake image"
+    },
+    {
+      "id": "5",
+      "name": "Cheesecake",
+      "imgUrl": "https://cdn.pixabay.com/photo/2021/02/06/15/11/blueberry-cheesecake-5988437_640.jpg",
+      "price": 300,
+      "alt": "Cheesecake image"
+    }
+  ]
+}

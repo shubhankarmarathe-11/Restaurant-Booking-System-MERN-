@@ -1,0 +1,42 @@
+{
+  "restaurantName": "DemoRestaurant",
+
+  "about": {
+    "title": "About Us",
+    "description": "Flavour Feast is a place where great taste meets warm hospitality. We serve freshly prepared dishes made with high-quality ingredients, authentic flavours, and a passion for culinary excellence. Whether you're enjoying a quick bite or celebrating with family, we make sure every visit feels special.",
+    "highlights": [
+      "Fresh, hand-picked ingredients",
+      "Authentic recipes with a modern twist",
+      "Hygienic kitchen & safe food handling",
+      "Cozy ambience for families & friends",
+      "Fast delivery and easy table booking"
+    ]
+  },
+
+  "services": [
+    {
+      "id": 1,
+      "img": "https://cdn.pixabay.com/photo/2019/09/30/15/22/shopping-cart-4516039_640.jpg",
+      "name": "Online Food Delivery",
+      "description": "Order your favourite dishes from home with fast and fresh delivery."
+    },
+    {
+      "id": 2,
+      "img": "https://images.unsplash.com/photo-1599458252573-56ae36120de1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHRhYmxlJTIwYm9va2luZ3xlbnwwfHwwfHx8MA%3D%3D",
+      "name": "Table Booking",
+      "description": "Book your table online and avoid waiting during peak hours."
+    },
+    {
+      "id": 3,
+      "img": "https://images.unsplash.com/photo-1758957097741-fea28cb227b4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8RGluZS1JbiUyMEV4cGVyaWVuY2V8ZW58MHx8MHx8fDA%3D",
+      "name": "Dine-In Experience",
+      "description": "Enjoy delicious meals in a comfortable and family-friendly environment."
+    },
+    {
+      "id": 4,
+      "img": "https://images.unsplash.com/photo-1731060384841-318790e98c5f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Q2F0ZXJpbmclMjBTZXJ2aWNlc3xlbnwwfHwwfHx8MA%3D%3D",
+      "name": "Catering Services",
+      "description": "Perfect for small gatherings, parties, and corporate events."
+    }
+  ]
+}

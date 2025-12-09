@@ -1,0 +1,77 @@
+[
+  {
+    "TableNumber": 1,
+    "Seats": 4,
+    "ReservationStatus": false
+  },
+  {
+    "TableNumber": 2,
+    "Seats": 4,
+    "ReservationStatus": false
+  },
+  {
+    "TableNumber": 3,
+    "Seats": 4,
+    "ReservationStatus": false
+  },
+  {
+    "TableNumber": 4,
+    "Seats": 4,
+    "ReservationStatus": false
+  },
+  {
+    "TableNumber": 5,
+    "Seats": 4,
+    "ReservationStatus": false
+  },
+  {
+    "TableNumber": 6,
+    "Seats": 5,
+    "ReservationStatus": false
+  },
+  {
+    "TableNumber": 7,
+    "Seats": 5,
+    "ReservationStatus": false
+  },
+  {
+    "TableNumber": 8,
+    "Seats": 5,
+    "ReservationStatus": false
+  },
+  {
+    "TableNumber": 9,
+    "Seats": 5,
+    "ReservationStatus": false
+  },
+  {
+    "TableNumber": 10,
+    "Seats": 5,
+    "ReservationStatus": false
+  },
+  {
+    "TableNumber": 11,
+    "Seats": 6,
+    "ReservationStatus": false
+  },
+  {
+    "TableNumber": 12,
+    "Seats": 6,
+    "ReservationStatus": false
+  },
+  {
+    "TableNumber": 13,
+    "Seats": 6,
+    "ReservationStatus": false
+  },
+  {
+    "TableNumber": 14,
+    "Seats": 6,
+    "ReservationStatus": false
+  },
+  {
+    "TableNumber": 15,
+    "Seats": 6,
+    "ReservationStatus": false
+  }
+]

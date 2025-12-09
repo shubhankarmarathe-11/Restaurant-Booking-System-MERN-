@@ -1,0 +1,30 @@
+{
+  "User": {
+    "name": "admin",
+    "email": "admin@gmail.com",
+    "number": "9403671865",
+    "pictureurl": "https://media.istockphoto.com/id/1300972574/photo/millennial-male-team-leader-organize-virtual-workshop-with-employees-online.webp?s=2048x2048&w=is&k=20&c=tU5X1sJJ9sIcqthiw5RO388RhKNllo0ZF82LPitfXgU="
+  },
+  "TableBooking": [
+    {
+      "Datetime": "mon 19-6-2025 15:00:00",
+      "Tablenumbers": [10, 15, 2, 4]
+    }
+  ],
+  "OrderDetails": [
+    {
+      "Datetime": "mon 19-6-2025 15:00:00",
+      "ItemDetails": [
+        {
+          "name": "pav bhaji",
+          "quantity": 5
+        },
+        {
+          "name": "chicken",
+          "quantity": 5
+        }
+      ],
+      "TotalAmount": 1000
+    }
+  ]
+}

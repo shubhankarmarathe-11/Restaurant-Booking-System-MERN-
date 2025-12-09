@@ -1,0 +1,83 @@
+{
+  "four": [
+    {
+      "value": 1,
+      "text": 1,
+      "available": true
+    },
+    {
+      "value": 2,
+      "text": 2,
+      "available": true
+    },
+    {
+      "value": 3,
+      "text": 3,
+      "available": false
+    },
+    {
+      "value": 4,
+      "text": 4,
+      "available": true
+    },
+    {
+      "value": 5,
+      "text": 5,
+      "available": true
+    }
+  ],
+  "five": [
+    {
+      "value": 6,
+      "text": 6,
+      "available": true
+    },
+    {
+      "value": 7,
+      "text": 7,
+      "available": true
+    },
+    {
+      "value": 8,
+      "text": 8,
+      "available": true
+    },
+    {
+      "value": 9,
+      "text": 9,
+      "available": true
+    },
+    {
+      "value": 10,
+      "text": 10,
+      "available": true
+    }
+  ],
+  "six": [
+    {
+      "value": 11,
+      "text": 11,
+      "available": true
+    },
+    {
+      "value": 12,
+      "text": 12,
+      "available": true
+    },
+    {
+      "value": 13,
+      "text": 13,
+      "available": true
+    },
+    {
+      "text": 14,
+      "value": 14,
+      "available": true
+    },
+    {
+      "value": 15,
+      "text": 15,
+      "available": false
+    }
+  ]
+}

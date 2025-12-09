@@ -2,7 +2,7 @@ import JWT from "jsonwebtoken";
 
 const SignToken = async (data) => {
   try {
-    let token = JWT.sign({ data: data }, "key", {
+    let token = JWT.sign({ data: data }, `${process.env.JWTTOKEN}`, {
       algorithm: "HS512",
       expiresIn: "1800000s",
     });
@@ -15,7 +15,9 @@ const SignToken = async (data) => {
 
 const VerifyToken = async (data) => {
   try {
-    let token = JWT.verify(String(data), "key", { algorithms: "HS512" });
+    let token = JWT.verify(String(data), `${process.env.JWTTOKEN}`, {
+      algorithms: "HS512",
+    });
     return token;
   } catch (err) {
     if (err.message === "jwt expired") {

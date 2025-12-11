@@ -1,5 +1,11 @@
 import Details from "./Details.json";
 import BgImg from "../../assets/BackgroundImg.png";
+import { useState, useEffect, useContext } from "react";
+import { UserDetails } from "../../Context/LoginContext";
+import { Navbar } from "../ReUsable/Navbar";
+import { Footer } from "../ReUsable/Footer";
+import axios from "axios";
+import Loader from "../ReUsable/Loader";
 
 const ServicesCard = ({ data }) => {
   return (
@@ -17,30 +23,70 @@ const ServicesCard = ({ data }) => {
 };
 
 const About = () => {
+  const [loading, Setloading] = useState(true);
+  const userdetail = useContext(UserDetails);
+
+  const GetInfo = async () => {
+    await axios
+      .get("/api/IsActive", { withCredentials: true })
+      .then((res) => {
+        if (res.data.isactive) {
+          userdetail.Setuser(res.data);
+          setTimeout(() => {
+            Setloading(false);
+          }, 500);
+        }
+        setTimeout(() => {
+          Setloading(false);
+        }, 500);
+      })
+      .catch((err) => {
+        console.log(err);
+        setTimeout(() => {
+          Setloading(false);
+        }, 500);
+      });
+  };
+
+  useEffect(() => {
+    if (!userdetail.user.isactive || userdetail.user.isactive == undefined) {
+      GetInfo();
+    } else {
+      Setloading(false);
+    }
+  }, []);
   return (
     <>
-      <h2 className="text-3xl text-center my-5">{Details.about.title}</h2>
-      <div
-        className="bg-cover bg-center h-auto w-auto m-1 sm:m-5 rounded-2xl "
-        style={{ backgroundImage: `url(${BgImg})` }}
-      >
-        <span className="text-white flex flex-col items-center">
-          <p className="my-6 mx-5 sm:w-5xl text-center  font-bold text-xl">
-            {Details.about.description}
-          </p>
-          <span>
-            {Details.about.highlights.map((u) => {
-              return <p className="text-center my-4 font-bold">{u}</p>;
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <Navbar />
+          <h2 className="text-3xl text-center my-5">{Details.about.title}</h2>
+          <div
+            className="bg-cover bg-center h-auto w-auto m-1 sm:m-5 rounded-2xl "
+            style={{ backgroundImage: `url(${BgImg})` }}
+          >
+            <span className="text-white flex flex-col items-center">
+              <p className="my-6 mx-5 sm:w-5xl text-center  font-bold text-xl">
+                {Details.about.description}
+              </p>
+              <span>
+                {Details.about.highlights.map((u) => {
+                  return <p className="text-center my-4 font-bold">{u}</p>;
+                })}
+              </span>
+            </span>
+          </div>
+          <h2 className="my-3 text-center text-2xl">Restaurant Services</h2>
+          <span className="flex flex-col justify-center items-center sm:flex-row">
+            {Details.services.map((data) => {
+              return <ServicesCard data={data} />;
             })}
           </span>
-        </span>
-      </div>
-      <h2 className="my-3 text-center text-2xl">Restaurant Services</h2>
-      <span className="flex flex-col justify-center items-center sm:flex-row">
-        {Details.services.map((data) => {
-          return <ServicesCard data={data} />;
-        })}
-      </span>
+          <Footer />
+        </>
+      )}
     </>
   );
 };

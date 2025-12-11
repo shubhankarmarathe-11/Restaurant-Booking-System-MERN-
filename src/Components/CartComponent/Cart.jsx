@@ -1,9 +1,20 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserDetails } from "../../Context/LoginContext";
 import { faTrashCan, faAdd } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
+import Loader from "../ReUsable/Loader";
+import { Navbar } from "../ReUsable/Navbar";
+import { Footer } from "../ReUsable/Footer";
 
 const Cart = () => {
   const [TotalPrice, SetTotalPrice] = useState(0);
+  let navigate = useNavigate();
+
+  const [loading, Setloading] = useState(true);
+  const userdetail = useContext(UserDetails);
+
   const [CartItem, SetCartItem] = useState([
     {
       id: 1,
@@ -27,7 +38,7 @@ const Cart = () => {
 
   const Pluscount = (id) => {
     const updated = CartItem.map((item) =>
-      item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+      item.id === id ? { ...item, quantity: item.quantity + 1 } : item
     );
 
     SetCartItem(updated);
@@ -36,7 +47,7 @@ const Cart = () => {
   const Minuscount = async (id, quantity) => {
     if (quantity > 1) {
       const updated = CartItem.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
+        item.id === id ? { ...item, quantity: item.quantity - 1 } : item
       );
 
       return SetCartItem(updated);
@@ -49,69 +60,109 @@ const Cart = () => {
   const toggleItem = (id) => {
     SetCartItem(
       CartItem.map((item) =>
-        item.id === id ? { ...item, selected: !item.selected } : item,
-      ),
+        item.id === id ? { ...item, selected: !item.selected } : item
+      )
     );
   };
 
+  const GetInfo = async () => {
+    console.log("working");
+
+    await axios
+      .get("/api/IsActive", { withCredentials: true })
+      .then((res) => {
+        if (res.data.isactive) {
+          userdetail.Setuser(res.data);
+          setTimeout(() => {
+            Setloading(false);
+          }, 500);
+        }
+        setTimeout(() => {
+          Setloading(false);
+        }, 500);
+      })
+      .catch((err) => {
+        console.log(err);
+        setTimeout(() => {
+          Setloading(false);
+        }, 500);
+      });
+  };
+
+  useEffect(() => {
+    if (!userdetail.user.isactive || userdetail.user.isactive == undefined) {
+      GetInfo();
+    } else {
+      Setloading(false);
+    }
+  }, []);
+
   return (
     <>
-      <div className="flex flex-col  items-center h-auto">
-        <h2 className="text-2xl text-center">Cart Items</h2>
-        <span className="h-auto flex flex-col items-center ">
-          <h2 className="text-center rounded shadow-2xl m-5 p-2 w-fit ">
-            Total Amount - {TotalPrice} Rs.
-          </h2>
-          <div className="flex flex-col sm:flex-row justify-center items-center w-full flex-wrap ">
-            {CartItem.map((u) => {
-              return (
-                <div className="w-80 shadow rounded-2xl p-2 flex flex-col items-start bg-amber-200 my-2 sm:mx-2">
-                  <span className="flex flex-row items-center justify-around w-full">
-                    <input
-                      type="checkbox"
-                      className="m-2"
-                      checked={u.selected}
-                      onChange={() => {
-                        toggleItem(u.id);
-                      }}
-                    />
-                    <img
-                      className="h-20 w-20 sm:h-20 sm:w-20 rounded"
-                      src={u.imgurl}
-                    />
-                    <span className="flex flex-col justify-center">
-                      <h2 className="">{u.name}</h2>
-                      <p className="text-center">{u.price} Rs</p>
-                      <span className="flex items-center justify-center my-2">
-                        <button
-                          onClick={() => {
-                            Minuscount(u.id, u.quantity);
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <Navbar />
+          <div className="flex flex-col  items-center h-auto">
+            <h2 className="text-2xl text-center">Cart Items</h2>
+            <span className="h-auto flex flex-col items-center ">
+              <h2 className="text-center rounded shadow-2xl m-5 p-2 w-fit ">
+                Total Amount - {TotalPrice} Rs.
+              </h2>
+              <div className="flex flex-col sm:flex-row justify-center items-center w-full flex-wrap ">
+                {CartItem.map((u) => {
+                  return (
+                    <div className="w-80 shadow rounded-2xl p-2 flex flex-col items-start bg-amber-200 my-2 sm:mx-2">
+                      <span className="flex flex-row items-center justify-around w-full">
+                        <input
+                          type="checkbox"
+                          className="m-2"
+                          checked={u.selected}
+                          onChange={() => {
+                            toggleItem(u.id);
                           }}
-                          className="bg-white  p-1 rounded h-auto w-auto cursor-pointer "
-                        >
-                          <FontAwesomeIcon icon={faTrashCan} />
-                        </button>
-                        <p className="m-2">{u.quantity}</p>
-                        <button
-                          onClick={() => {
-                            Pluscount(u.id);
-                          }}
-                          className="bg-white  p-1 rounded h-auto w-auto cursor-pointer"
-                        >
-                          <FontAwesomeIcon icon={faAdd} />
-                        </button>
+                        />
+                        <img
+                          className="h-20 w-20 sm:h-20 sm:w-20 rounded"
+                          src={u.imgurl}
+                        />
+                        <span className="flex flex-col justify-center">
+                          <h2 className="">{u.name}</h2>
+                          <p className="text-center">{u.price} Rs</p>
+                          <span className="flex items-center justify-center my-2">
+                            <button
+                              onClick={() => {
+                                Minuscount(u.id, u.quantity);
+                              }}
+                              className="bg-white  p-1 rounded h-auto w-auto cursor-pointer "
+                            >
+                              <FontAwesomeIcon icon={faTrashCan} />
+                            </button>
+                            <p className="m-2">{u.quantity}</p>
+                            <button
+                              onClick={() => {
+                                Pluscount(u.id);
+                              }}
+                              className="bg-white  p-1 rounded h-auto w-auto cursor-pointer"
+                            >
+                              <FontAwesomeIcon icon={faAdd} />
+                            </button>
+                          </span>
+                        </span>
                       </span>
-                    </span>
-                  </span>
-                </div>
-              );
-            })}
+                    </div>
+                  );
+                })}
+              </div>
+              <button className="w-full mt-5 bg-black text-white p-2 rounded cursor-pointer shadow sm:w-fit">
+                Order Now
+              </button>
+            </span>
           </div>
-          <button className="w-full mt-5 bg-black text-white p-2 rounded cursor-pointer shadow sm:w-fit">
-            Order Now
-          </button>
-        </span>
-      </div>
+          <Footer />
+        </>
+      )}
     </>
   );
 };

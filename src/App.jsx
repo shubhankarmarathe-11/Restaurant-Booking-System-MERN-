@@ -27,11 +27,9 @@ function App() {
             element={
               <>
                 <div className="min-h-screen flex flex-col">
-                  <Navbar />
                   <span className="flex-1">
                     <Home />
                   </span>
-                  <Footer />
                 </div>
               </>
             }
@@ -41,11 +39,9 @@ function App() {
             element={
               <>
                 <div className="min-h-screen flex flex-col">
-                  <Navbar />
                   <span className="flex-1">
                     <About />
                   </span>
-                  <Footer />
                 </div>
               </>
             }
@@ -55,11 +51,9 @@ function App() {
             element={
               <>
                 <div className="min-h-screen flex flex-col">
-                  <Navbar />
                   <span className="flex-1">
                     <BookTable />
                   </span>
-                  <Footer />
                 </div>
               </>
             }
@@ -69,11 +63,9 @@ function App() {
             element={
               <>
                 <div className="min-h-screen flex flex-col">
-                  <Navbar />
                   <span className="flex-1">
                     <MenuCard />
                   </span>
-                  <Footer />
                 </div>
               </>
             }
@@ -83,11 +75,9 @@ function App() {
             element={
               <>
                 <div className="min-h-screen flex flex-col">
-                  <Navbar />
                   <span className="flex-1">
                     <Cart />
                   </span>
-                  <Footer />
                 </div>
               </>
             }
@@ -113,11 +103,9 @@ function App() {
             element={
               <>
                 <div className="min-h-screen flex flex-col">
-                  <Navbar />
                   <span className="flex-1">
                     <DashBoard />
                   </span>
-                  <Footer />
                 </div>
               </>
             }

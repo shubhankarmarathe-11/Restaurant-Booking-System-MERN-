@@ -1,5 +1,12 @@
 import FoodItem from "../../../fooditemdatainjson.json";
 import { Card } from "../ReUsable/Card";
+import { useState, useEffect, useContext } from "react";
+import { UserDetails } from "../../Context/LoginContext";
+import { Navbar } from "../ReUsable/Navbar";
+import { Footer } from "../ReUsable/Footer";
+import axios from "axios";
+import Loader from "../ReUsable/Loader";
+
 const MenuDiv = ({ data }) => {
   return (
     <>
@@ -17,17 +24,63 @@ const MenuDiv = ({ data }) => {
 };
 
 const MenuCard = () => {
+  const [loading, Setloading] = useState(true);
+  const userdetail = useContext(UserDetails);
+
+  const GetInfo = async () => {
+    await axios
+      .get("/api/IsActive", { withCredentials: true })
+      .then((res) => {
+        if (res.data.isactive) {
+          userdetail.Setuser(res.data);
+          setTimeout(() => {
+            Setloading(false);
+          }, 500);
+        }
+        setTimeout(() => {
+          Setloading(false);
+        }, 500);
+      })
+      .catch((err) => {
+        console.log(err);
+        setTimeout(() => {
+          Setloading(false);
+        }, 500);
+      });
+  };
+
+  useEffect(() => {
+    if (!userdetail.user.isactive || userdetail.user.isactive == undefined) {
+      GetInfo();
+    } else {
+      Setloading(false);
+    }
+  }, []);
   return (
     <>
-      <div className="text-4xl text-center my-5 font-bold">🧾 Menu Card</div>
-      <li className="font-bold sm:text-2xl mx-2  text-center">
-        🍛 Indian Food
-      </li>
-      <MenuDiv data={FoodItem.indianFood} />
-      <li className="font-bold sm:text-2xl mx-2  text-center">🍕 Fast Food</li>
-      <MenuDiv data={FoodItem.fastFood} />
-      <li className="font-bold sm:text-2xl mx-2  text-center">🍰 Desserts</li>
-      <MenuDiv data={FoodItem.desserts} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <Navbar />
+          <div className="text-4xl text-center my-5 font-bold">
+            🧾 Menu Card
+          </div>
+          <li className="font-bold sm:text-2xl mx-2  text-center">
+            🍛 Indian Food
+          </li>
+          <MenuDiv data={FoodItem.indianFood} />
+          <li className="font-bold sm:text-2xl mx-2  text-center">
+            🍕 Fast Food
+          </li>
+          <MenuDiv data={FoodItem.fastFood} />
+          <li className="font-bold sm:text-2xl mx-2  text-center">
+            🍰 Desserts
+          </li>
+          <MenuDiv data={FoodItem.desserts} />
+          <Footer />
+        </>
+      )}
     </>
   );
 };

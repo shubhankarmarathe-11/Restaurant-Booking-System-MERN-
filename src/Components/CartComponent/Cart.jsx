@@ -104,7 +104,7 @@ const Cart = () => {
       ) : (
         <>
           <Navbar />
-          <div className="flex flex-col  items-center h-auto">
+          <div className="flex flex-col  items-center flex-1">
             <h2 className="text-2xl text-center">Cart Items</h2>
             <span className="h-auto flex flex-col items-center ">
               <h2 className="text-center rounded shadow-2xl m-5 p-2 w-fit ">

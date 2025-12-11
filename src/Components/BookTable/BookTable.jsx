@@ -5,6 +5,8 @@ import axios from "axios";
 import { Navbar } from "../ReUsable/Navbar";
 import { Footer } from "../ReUsable/Footer";
 import Loader from "../ReUsable/Loader";
+import { GoogleLogin } from "../ReUsable/GoogleLogin";
+import { ToastContainer, toast, Bounce } from "react-toastify";
 
 const BookTable = () => {
   const [openTables, setOpenTables] = useState([]);
@@ -57,11 +59,33 @@ const BookTable = () => {
 
       .then(async (res) => {
         if (res.status == 200) {
+          toast.success(res.data.message, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
           await ResetValue();
         }
       })
       .catch((err) => {
         console.log(err.response);
+        toast.error(err.response.data, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       });
   };
 
@@ -120,8 +144,21 @@ const BookTable = () => {
         <Loader />
       ) : (
         <>
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            transition={Bounce}
+          />
           <Navbar />
-          <div className="flex flex-col-reverse sm:flex-row sm:justify-between py-5 my-5">
+          <div className="flex-1 flex flex-col-reverse sm:flex-row sm:justify-between py-5 my-5">
             <form
               onSubmit={(e) => e.preventDefault()}
               className="flex flex-col sm:w-5xl"

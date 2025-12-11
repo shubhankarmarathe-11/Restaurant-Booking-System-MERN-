@@ -63,21 +63,23 @@ const MenuCard = () => {
       ) : (
         <>
           <Navbar />
-          <div className="text-4xl text-center my-5 font-bold">
-            🧾 Menu Card
+          <div className="flex-1">
+            <div className="text-4xl text-center my-5 font-bold">
+              🧾 Menu Card
+            </div>
+            <li className="font-bold sm:text-2xl mx-2  text-center">
+              🍛 Indian Food
+            </li>
+            <MenuDiv data={FoodItem.indianFood} />
+            <li className="font-bold sm:text-2xl mx-2  text-center">
+              🍕 Fast Food
+            </li>
+            <MenuDiv data={FoodItem.fastFood} />
+            <li className="font-bold sm:text-2xl mx-2  text-center">
+              🍰 Desserts
+            </li>
+            <MenuDiv data={FoodItem.desserts} />
           </div>
-          <li className="font-bold sm:text-2xl mx-2  text-center">
-            🍛 Indian Food
-          </li>
-          <MenuDiv data={FoodItem.indianFood} />
-          <li className="font-bold sm:text-2xl mx-2  text-center">
-            🍕 Fast Food
-          </li>
-          <MenuDiv data={FoodItem.fastFood} />
-          <li className="font-bold sm:text-2xl mx-2  text-center">
-            🍰 Desserts
-          </li>
-          <MenuDiv data={FoodItem.desserts} />
           <Footer />
         </>
       )}

@@ -81,7 +81,7 @@ const DashBoard = () => {
       ) : (
         <>
           <Navbar />
-          <div className="p-6 sm:flex sm:gap-6">
+          <div className="p-6 sm:flex sm:gap-6 flex-1">
             {/* LEFT SIDE (Table + Orders) */}
             <div className="mt-6 mb-6 sm:mb-0 sm:mt-0 sm:w-1/3 p-4 border rounded-lg shadow-md flex flex-col items-center">
               <img

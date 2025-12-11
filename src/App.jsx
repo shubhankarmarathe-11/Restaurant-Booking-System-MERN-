@@ -51,9 +51,7 @@ function App() {
             element={
               <>
                 <div className="min-h-screen flex flex-col">
-                  <span className="flex-1">
-                    <BookTable />
-                  </span>
+                  <BookTable />
                 </div>
               </>
             }
@@ -63,9 +61,7 @@ function App() {
             element={
               <>
                 <div className="min-h-screen flex flex-col">
-                  <span className="flex-1">
-                    <MenuCard />
-                  </span>
+                  <MenuCard />
                 </div>
               </>
             }
@@ -75,9 +71,7 @@ function App() {
             element={
               <>
                 <div className="min-h-screen flex flex-col">
-                  <span className="flex-1">
-                    <Cart />
-                  </span>
+                  <Cart />
                 </div>
               </>
             }
@@ -103,9 +97,7 @@ function App() {
             element={
               <>
                 <div className="min-h-screen flex flex-col">
-                  <span className="flex-1">
-                    <DashBoard />
-                  </span>
+                  <DashBoard />
                 </div>
               </>
             }

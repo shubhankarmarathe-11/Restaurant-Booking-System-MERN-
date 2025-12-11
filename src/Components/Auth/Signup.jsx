@@ -3,6 +3,9 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Loader from "../ReUsable/Loader";
 import { GoogleLogin } from "../ReUsable/GoogleLogin";
+import { UserDetails } from "../../Context/LoginContext";
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
   const [name, Setname] = useState("");
@@ -24,6 +27,17 @@ const Signup = () => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        toast.error(err.response.data, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       });
   };
 
@@ -53,68 +67,85 @@ const Signup = () => {
           <Loader />
         </>
       ) : (
-        <div className="flex-1 h-screen flex flex-col items-center justify-center">
-          <span className="rounded-2xl sm:w-2xl shadow w-96 sm:p-5 border-s-slate-950 sm:border">
-            <h2 className="text-3xl text-center my-2 w-full">🔐 Signup Now</h2>
-            <form
-              className="flex flex-col rounded my-5 p-2 w-full"
-              onSubmit={(e) => {
-                e.preventDefault();
-                SubmitData();
-              }}
-            >
-              <p className="my-2 text-left">👤 Name</p>
-              <input
-                className="rounded outline-blue-500 outline-1 p-2 my-3"
-                type="text"
-                placeholder="Enter Your Name"
-                value={name}
-                onChange={(e) => Setname(e.target.value)}
-              />
-              <p className="my-2 text-left">✉️ Email</p>
-              <input
-                className="rounded outline-blue-500 outline-1 p-2 my-3"
-                type="email"
-                placeholder="Enter Your Email"
-                value={email}
-                onChange={(e) => Setemail(e.target.value)}
-              />
-              <p className="my-2 text-left">📞 Mobile Number</p>
-              <input
-                className="rounded outline-blue-500 outline-1 p-2 my-3"
-                type="text"
-                placeholder="Enter Your Mobile Number"
-                value={number}
-                onChange={(e) => Setnumber(e.target.value)}
-              />
-              <p className="my-2 text-left">🔑 Password</p>
-              <input
-                className="rounded outline-blue-500 outline-1 p-2 my-3"
-                type="password"
-                placeholder="Create Your Password"
-                value={password}
-                onChange={(e) => Setpassword(e.target.value)}
-              />
-              <button
-                className="bg-black text-white my-3 p-3 rounded cursor-pointer shadow"
-                type="submit"
+        <>
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            transition={Bounce}
+          />
+          <div className="flex-1 h-screen flex flex-col items-center justify-center">
+            <span className="rounded-2xl sm:w-2xl shadow w-96 sm:p-5 border-s-slate-950 sm:border">
+              <h2 className="text-3xl text-center my-2 w-full">
+                🔐 Signup Now
+              </h2>
+              <form
+                className="flex flex-col rounded my-5 p-2 w-full"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  SubmitData();
+                }}
               >
-                Signup
-              </button>
-              <p className="my-2 text-center">----or----</p>
-              {/* code for google login*/}
-              <span className="flex justify-center items-center">
-                <GoogleLogin />
-              </span>
-              <Link
-                to={"/login"}
-                className="text-violet-500 my-3 text-center underline"
-              >
-                Login Now
-              </Link>
-            </form>
-          </span>
-        </div>
+                <p className="my-2 text-left">👤 Name</p>
+                <input
+                  className="rounded outline-blue-500 outline-1 p-2 my-3"
+                  type="text"
+                  placeholder="Enter Your Name"
+                  value={name}
+                  onChange={(e) => Setname(e.target.value)}
+                />
+                <p className="my-2 text-left">✉️ Email</p>
+                <input
+                  className="rounded outline-blue-500 outline-1 p-2 my-3"
+                  type="email"
+                  placeholder="Enter Your Email"
+                  value={email}
+                  onChange={(e) => Setemail(e.target.value)}
+                />
+                <p className="my-2 text-left">📞 Mobile Number</p>
+                <input
+                  className="rounded outline-blue-500 outline-1 p-2 my-3"
+                  type="text"
+                  placeholder="Enter Your Mobile Number"
+                  value={number}
+                  onChange={(e) => Setnumber(e.target.value)}
+                />
+                <p className="my-2 text-left">🔑 Password</p>
+                <input
+                  className="rounded outline-blue-500 outline-1 p-2 my-3"
+                  type="password"
+                  placeholder="Create Your Password"
+                  value={password}
+                  onChange={(e) => Setpassword(e.target.value)}
+                />
+                <button
+                  className="bg-black text-white my-3 p-3 rounded cursor-pointer shadow"
+                  type="submit"
+                >
+                  Signup
+                </button>
+                <p className="my-2 text-center">----or----</p>
+                {/* code for google login*/}
+                <span className="flex justify-center items-center">
+                  <GoogleLogin />
+                </span>
+                <Link
+                  to={"/login"}
+                  className="text-violet-500 my-3 text-center underline"
+                >
+                  Login Now
+                </Link>
+              </form>
+            </span>
+          </div>
+        </>
       )}
     </>
   );

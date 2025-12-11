@@ -78,7 +78,7 @@ const Bookcontroller = async (req, res) => {
       return res.status(400).send("please try again");
     }
 
-    return res.status(200).json({
+    return res.status(200).send({
       message: "Tables booked successfully",
       booking,
     });

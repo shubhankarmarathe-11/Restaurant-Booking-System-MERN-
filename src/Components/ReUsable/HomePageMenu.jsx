@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Card } from "../ReUsable/Card";
+
 const HomePageMenu = ({ data }) => {
   return (
     <>
@@ -7,14 +8,14 @@ const HomePageMenu = ({ data }) => {
         {data.length > 5 ? (
           <>
             <span className="flex flex-row flex-nowrap sm:flex-wrap overflow-x-auto items-center sm:justify-center">
-              {data.slice(0, 5).map(({ id, imgUrl, name, price, alt }) => {
+              {data.slice(0, 5).map(({ _id, FoodName, ImageUrl, Price }) => {
                 return (
                   <Card
-                    id={id}
-                    img={imgUrl}
-                    name={name}
-                    price={price}
-                    alt={alt}
+                    id={_id}
+                    img={ImageUrl}
+                    name={FoodName}
+                    price={Price}
+                    alt={FoodName + " image"}
                   />
                 );
               })}
@@ -29,14 +30,14 @@ const HomePageMenu = ({ data }) => {
         ) : (
           <>
             <span className="flex flex-row flex-nowrap sm:flex-wrap overflow-x-auto items-center sm:justify-center">
-              {data.map(({ id, imgUrl, name, price, alt }) => {
+              {data.map(({ _id, FoodName, ImageUrl, Price }) => {
                 return (
                   <Card
-                    id={id}
-                    img={imgUrl}
-                    name={name}
-                    price={price}
-                    alt={alt}
+                    id={_id}
+                    img={ImageUrl}
+                    name={FoodName}
+                    price={Price}
+                    alt={FoodName + " image"}
                   />
                 );
               })}

@@ -2,19 +2,27 @@ import FoodItem from "../../../fooditemdatainjson.json";
 import { Card } from "../ReUsable/Card";
 import { useState, useEffect, useContext } from "react";
 import { UserDetails } from "../../Context/LoginContext";
+import { Fooditems } from "../../Context/FooditemContext";
 import { Navbar } from "../ReUsable/Navbar";
 import { Footer } from "../ReUsable/Footer";
 import axios from "axios";
 import Loader from "../ReUsable/Loader";
 
 const MenuDiv = ({ data }) => {
+  if (data == undefined) return null;
   return (
     <>
       <span className="flex flex-col flex-nowrap sm:justify-center">
         <span className="flex flex-row flex-wrap overflow-x-auto items-center justify-center">
-          {data.map(({ id, imgUrl, name, price, alt }) => {
+          {data.map(({ _id, FoodName, ImageUrl, Price }) => {
             return (
-              <Card id={id} img={imgUrl} name={name} price={price} alt={alt} />
+              <Card
+                id={_id}
+                img={ImageUrl}
+                name={FoodName}
+                price={Price}
+                alt={FoodName + " image"}
+              />
             );
           })}
         </span>
@@ -26,6 +34,7 @@ const MenuDiv = ({ data }) => {
 const MenuCard = () => {
   const [loading, Setloading] = useState(true);
   const userdetail = useContext(UserDetails);
+  const fooditems = useContext(Fooditems);
 
   const GetInfo = async () => {
     await axios
@@ -49,13 +58,32 @@ const MenuCard = () => {
       });
   };
 
+  const GetFooItem = async () => {
+    Setloading(true);
+    axios
+      .get("/api/getitems", { withCredentials: true })
+      .then((res) => {
+        console.log(res.data);
+        fooditems.SetFooditems(res.data);
+        setTimeout(() => {
+          Setloading(false);
+        }, 500);
+      })
+      .catch((err) => {
+        console.log(err);
+        Setloading(true);
+      });
+  };
+
   useEffect(() => {
     if (!userdetail.user.isactive || userdetail.user.isactive == undefined) {
       GetInfo();
-    } else {
-      Setloading(false);
     }
   }, []);
+  useEffect(() => {
+    GetFooItem();
+  }, []);
+
   return (
     <>
       {loading ? (
@@ -70,15 +98,15 @@ const MenuCard = () => {
             <li className="font-bold sm:text-2xl mx-2  text-center">
               🍛 Indian Food
             </li>
-            <MenuDiv data={FoodItem.indianFood} />
+            <MenuDiv data={fooditems.fooditems.indianFood} />
             <li className="font-bold sm:text-2xl mx-2  text-center">
               🍕 Fast Food
             </li>
-            <MenuDiv data={FoodItem.fastFood} />
+            <MenuDiv data={fooditems.fooditems.fastFood} />
             <li className="font-bold sm:text-2xl mx-2  text-center">
               🍰 Desserts
             </li>
-            <MenuDiv data={FoodItem.desserts} />
+            <MenuDiv data={fooditems.fooditems.desserts} />
           </div>
           <Footer />
         </>

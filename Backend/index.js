@@ -21,6 +21,7 @@ import { IsActive } from "./Routes/IsActiveRoute.js";
 import { GoogleauthRoute } from "./Routes/GoogleAuth.js";
 import { BookTable } from "./Routes/BookTable.js";
 import { SendInfo } from "./Routes/SendDetails.js";
+import { CartRoute } from "./Routes/AddtoCart.js";
 
 dotenv.config();
 
@@ -52,6 +53,7 @@ app.use("/api", IsActive);
 app.use("/api", GoogleauthRoute);
 app.use("/api", BookTable);
 app.use("/api", SendInfo);
+app.use("/api", CartRoute);
 
 app.listen(PORT, () => {
   console.log(`working on localhost:${PORT}`);

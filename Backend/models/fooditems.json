@@ -1,0 +1,154 @@
+[
+  {
+    "Foodtype": "Indian",
+    "FoodName": "Butter Chicken",
+    "Price": 550,
+    "ImageUrl": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500&auto=format&fit=crop&q=60"
+  },
+  {
+    "Foodtype": "Indian",
+    "FoodName": "Paneer Tikka",
+    "Price": 200,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2018/12/04/16/49/tandoori-3856045_640.jpg"
+  },
+  {
+    "Foodtype": "Indian",
+    "FoodName": "Masala Dosa",
+    "Price": 60,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2022/01/27/07/34/masala-dosa-6971358_640.jpg"
+  },
+  {
+    "Foodtype": "Indian",
+    "FoodName": "Chole Bhature",
+    "Price": 80,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2016/03/21/21/33/chana-masala-1271639_1280.jpg"
+  },
+  {
+    "Foodtype": "Indian",
+    "FoodName": "Butter Naan",
+    "Price": 30,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2017/08/29/04/22/indian-2692073_640.jpg"
+  },
+  {
+    "Foodtype": "Indian",
+    "FoodName": "Chicken Biryani",
+    "Price": 600,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2023/10/19/11/18/biryani-8326234_1280.jpg"
+  },
+  {
+    "Foodtype": "Indian",
+    "FoodName": "Dal Tadka",
+    "Price": 100,
+    "ImageUrl": "https://images.unsplash.com/photo-1626500154744-e4b394ffea16?w=500&auto=format&fit=crop&q=60"
+  },
+  {
+    "Foodtype": "Indian",
+    "FoodName": "Veg Pulao",
+    "Price": 120,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2021/09/25/18/54/dish-6655595_640.jpg"
+  },
+  {
+    "Foodtype": "Indian",
+    "FoodName": "Palak Paneer",
+    "Price": 350,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2022/03/02/12/42/paneer-7043102_640.jpg"
+  },
+  {
+    "Foodtype": "Indian",
+    "FoodName": "Chicken Tandoori",
+    "Price": 600,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2020/08/07/07/03/chicken-5469835_640.jpg"
+  },
+
+  {
+    "Foodtype": "FastFood",
+    "FoodName": "Veg Burger",
+    "Price": 350,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2022/04/25/06/16/burger-7155160_640.jpg"
+  },
+  {
+    "Foodtype": "FastFood",
+    "FoodName": "Cheese Pizza",
+    "Price": 550,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2020/06/17/21/46/pizza-5311269_640.jpg"
+  },
+  {
+    "Foodtype": "FastFood",
+    "FoodName": "Chicken Wing",
+    "Price": 450,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2019/09/10/03/10/barbecue-4465145_640.jpg"
+  },
+  {
+    "Foodtype": "FastFood",
+    "FoodName": "French Fries",
+    "Price": 250,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2016/11/20/09/06/bowl-1842294_640.jpg"
+  },
+  {
+    "Foodtype": "FastFood",
+    "FoodName": "Schezwan Noodles",
+    "Price": 150,
+    "ImageUrl": "https://images.unsplash.com/photo-1617622141675-d3005b9067c5?w=500&auto=format&fit=crop&q=60"
+  },
+  {
+    "Foodtype": "FastFood",
+    "FoodName": "Momo",
+    "Price": 120,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2021/01/25/16/36/momo-5948840_640.jpg"
+  },
+  {
+    "Foodtype": "FastFood",
+    "FoodName": "Garlic Bread",
+    "Price": 100,
+    "ImageUrl": "https://images.unsplash.com/photo-1573140401552-3fab0b24306f?w=500&auto=format&fit=crop&q=60"
+  },
+  {
+    "Foodtype": "FastFood",
+    "FoodName": "Sandwich",
+    "Price": 50,
+    "ImageUrl": "https://images.unsplash.com/photo-1619096252214-ef06c45683e3?w=500&auto=format&fit=crop&q=60"
+  },
+  {
+    "Foodtype": "FastFood",
+    "FoodName": "Veg Roll",
+    "Price": 100,
+    "ImageUrl": "https://images.unsplash.com/photo-1620167789273-d66c723fe754?w=500&auto=format&fit=crop&q=60"
+  },
+  {
+    "Foodtype": "FastFood",
+    "FoodName": "Nachos",
+    "Price": 100,
+    "ImageUrl": "https://images.unsplash.com/photo-1619604107557-b5321217aee7?w=500&auto=format&fit=crop&q=60"
+  },
+
+  {
+    "Foodtype": "Dessert",
+    "FoodName": "Gulab Jamun",
+    "Price": 250,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2014/06/18/15/48/indian-sweet-371357_640.jpg"
+  },
+  {
+    "Foodtype": "Dessert",
+    "FoodName": "Rasgulla",
+    "Price": 350,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2014/12/22/12/33/sweets-577230_1280.jpg"
+  },
+  {
+    "Foodtype": "Dessert",
+    "FoodName": "Ice Cream Sundae",
+    "Price": 150,
+    "ImageUrl": "https://images.unsplash.com/photo-1514849302-984523450cf4?w=500&auto=format&fit=crop&q=60"
+  },
+  {
+    "Foodtype": "Dessert",
+    "FoodName": "Chocolate Cake",
+    "Price": 300,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2017/01/23/08/45/cake-2001781_640.jpg"
+  },
+  {
+    "Foodtype": "Dessert",
+    "FoodName": "Cheesecake",
+    "Price": 300,
+    "ImageUrl": "https://cdn.pixabay.com/photo/2021/02/06/15/11/blueberry-cheesecake-5988437_640.jpg"
+  }
+]

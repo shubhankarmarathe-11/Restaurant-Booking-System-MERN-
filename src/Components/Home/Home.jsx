@@ -1,10 +1,10 @@
 import { HomePageMenu } from "../ReUsable/HomePageMenu";
-import FoodItem from "../../../fooditemdatainjson.json";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "../ReUsable/Navbar";
 import { Footer } from "../ReUsable/Footer";
 import { useState, useEffect, useContext } from "react";
 import { UserDetails } from "../../Context/LoginContext";
+import { Fooditems } from "../../Context/FooditemContext";
 import axios from "axios";
 import Loader from "../ReUsable/Loader";
 
@@ -13,6 +13,7 @@ const Home = () => {
 
   const [loading, Setloading] = useState(true);
   const userdetail = useContext(UserDetails);
+  const fooditems = useContext(Fooditems);
 
   const GetInfo = async () => {
     await axios
@@ -36,12 +37,30 @@ const Home = () => {
       });
   };
 
+  const GetFooItem = async () => {
+    Setloading(true);
+    axios
+      .get("/api/getitems", { withCredentials: true })
+      .then((res) => {
+        fooditems.SetFooditems(res.data);
+        setTimeout(() => {
+          Setloading(false);
+        }, 500);
+      })
+      .catch((err) => {
+        console.log(err);
+        Setloading(true);
+        GetFooItem();
+      });
+  };
+
   useEffect(() => {
     if (!userdetail.user.isactive || userdetail.user.isactive == undefined) {
       GetInfo();
-    } else {
-      Setloading(false);
     }
+  }, []);
+  useEffect(() => {
+    GetFooItem();
   }, []);
 
   return (
@@ -77,11 +96,11 @@ const Home = () => {
           <div>
             <h2 className="text-center text-3xl my-2 ">Add to cart</h2>
             <li className="font-bold sm:text-2xl mx-2">🍛 Indian Food</li>
-            <HomePageMenu data={FoodItem.indianFood} />
+            <HomePageMenu data={fooditems.fooditems.indianFood} />
             <li className="font-bold sm:text-2xl mx-2">🍕 Fast Food</li>
-            <HomePageMenu data={FoodItem.fastFood} />
+            <HomePageMenu data={fooditems.fooditems.fastFood} />
             <li className="font-bold sm:text-2xl mx-2">🍰 Desserts</li>
-            <HomePageMenu data={FoodItem.desserts} />
+            <HomePageMenu data={fooditems.fooditems.desserts} />
           </div>
 
           <Footer />

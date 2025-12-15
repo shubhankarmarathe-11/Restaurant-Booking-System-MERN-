@@ -1,5 +1,6 @@
 import { Table } from "../models/TableDetails.js";
 import { Booking } from "../models/TableBooking.js";
+import { Fooditem } from "../models/FoodItem.js";
 import { VerifyToken } from "../utils/JwtToken.js";
 
 const SendInfofun = async (req, res) => {
@@ -56,4 +57,24 @@ const SendInfobookedtable = async (req, res) => {
   }
 };
 
-export { SendInfofun, SendInfobookedtable };
+const Senditemdetail = async (req, res) => {
+  try {
+    let GetItems = await Fooditem.find();
+
+    let indianFood = await GetItems.filter((u) => u.Foodtype == "Indian");
+    let fastFood = await GetItems.filter((u) => u.Foodtype == "FastFood");
+    let desserts = await GetItems.filter((u) => u.Foodtype == "Dessert");
+
+    res.status(200).send({
+      indianFood: indianFood,
+      fastFood: fastFood,
+      desserts: desserts,
+    });
+  } catch (error) {
+    console.log(error);
+
+    res.status(400).send("please try again");
+  }
+};
+
+export { SendInfofun, SendInfobookedtable, Senditemdetail };

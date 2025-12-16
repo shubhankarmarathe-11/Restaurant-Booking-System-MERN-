@@ -10,35 +10,17 @@ import { Footer } from "../ReUsable/Footer";
 
 const Cart = () => {
   const [TotalPrice, SetTotalPrice] = useState(0);
-  let navigate = useNavigate();
 
   const [loading, Setloading] = useState(true);
+  const [refresh, Setrefresh] = useState(true);
   const userdetail = useContext(UserDetails);
+  const navigate = useNavigate();
 
-  const [CartItem, SetCartItem] = useState([
-    {
-      id: 1,
-      name: "Butter Chicken",
-      imgurl:
-        "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500&auto=format&fit=crop&q=60",
-      price: 500,
-      quantity: 1,
-      selected: false,
-    },
-    {
-      id: 2,
-      name: "Paneer Tikka",
-      imgurl:
-        "https://cdn.pixabay.com/photo/2018/12/04/16/49/tandoori-3856045_640.jpg",
-      price: 600,
-      quantity: 2,
-      selected: false,
-    },
-  ]);
+  const [CartItem, SetCartItem] = useState([]);
 
   const Pluscount = (id) => {
     const updated = CartItem.map((item) =>
-      item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      item.id === id ? { ...item, Quantity: item.Quantity + 1 } : item
     );
 
     SetCartItem(updated);
@@ -47,7 +29,7 @@ const Cart = () => {
   const Minuscount = async (id, quantity) => {
     if (quantity > 1) {
       const updated = CartItem.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+        item.id === id ? { ...item, Quantity: item.Quantity - 1 } : item
       );
 
       return SetCartItem(updated);
@@ -60,19 +42,45 @@ const Cart = () => {
   const toggleItem = (id) => {
     SetCartItem(
       CartItem.map((item) =>
-        item.id === id ? { ...item, selected: !item.selected } : item
+        item._id === id ? { ...item, selected: !item.selected } : item
       )
     );
+    SetTotalPrice(0);
+    Setrefresh(!refresh);
   };
 
   const GetInfo = async () => {
-    console.log("working");
-
     await axios
       .get("/api/IsActive", { withCredentials: true })
       .then((res) => {
         if (res.data.isactive) {
           userdetail.Setuser(res.data);
+          setTimeout(() => {
+            Setloading(false);
+          }, 500);
+        }
+        navigate("/login");
+        setTimeout(() => {
+          Setloading(false);
+        }, 500);
+      })
+      .catch((err) => {
+        console.log(err);
+        setTimeout(() => {
+          Setloading(false);
+        }, 500);
+      });
+  };
+
+  const GetcartItems = async () => {
+    Setloading(true);
+    await axios
+      .get("/api/getcartitems", { withCredentials: true })
+      .then((res) => {
+        if (res.status == 201) {
+          console.log(res.data.data);
+
+          SetCartItem(res.data.data);
           setTimeout(() => {
             Setloading(false);
           }, 500);
@@ -95,6 +103,17 @@ const Cart = () => {
     } else {
       Setloading(false);
     }
+  }, []);
+
+  useEffect(() => {
+    let arr = CartItem.filter((u) => u.selected == true);
+    for (let i of arr) {
+      SetTotalPrice(TotalPrice + i.Price);
+    }
+  }, [refresh]);
+
+  useEffect(() => {
+    GetcartItems();
   }, []);
 
   return (
@@ -120,26 +139,26 @@ const Cart = () => {
                           className="m-2"
                           checked={u.selected}
                           onChange={() => {
-                            toggleItem(u.id);
+                            toggleItem(u._id);
                           }}
                         />
                         <img
                           className="h-20 w-20 sm:h-20 sm:w-20 rounded"
-                          src={u.imgurl}
+                          src={u.ImageUrl}
                         />
                         <span className="flex flex-col justify-center">
-                          <h2 className="">{u.name}</h2>
-                          <p className="text-center">{u.price} Rs</p>
+                          <h2 className="">{u.FoodName}</h2>
+                          <p className="text-center">{u.Price} Rs</p>
                           <span className="flex items-center justify-center my-2">
                             <button
                               onClick={() => {
-                                Minuscount(u.id, u.quantity);
+                                Minuscount(u._id, u.Quantity);
                               }}
                               className="bg-white  p-1 rounded h-auto w-auto cursor-pointer "
                             >
                               <FontAwesomeIcon icon={faTrashCan} />
                             </button>
-                            <p className="m-2">{u.quantity}</p>
+                            <p className="m-2">{u.Quantity}</p>
                             <button
                               onClick={() => {
                                 Pluscount(u.id);

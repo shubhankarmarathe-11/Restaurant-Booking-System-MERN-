@@ -60,7 +60,9 @@ const Home = () => {
     }
   }, []);
   useEffect(() => {
-    GetFooItem();
+    if (Object.keys(fooditems.fooditems).length === 0) {
+      GetFooItem();
+    }
   }, []);
 
   return (

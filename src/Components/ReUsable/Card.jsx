@@ -1,7 +1,24 @@
 import { useState } from "react";
+import axios from "axios";
 
 const Card = ({ id, img, name, price, alt }) => {
   const [count, Setcount] = useState(1);
+
+  const AddToCart = async () => {
+    await axios
+      .post(
+        "/api/addtocart",
+        { Foodid: id, Quantity: count },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        console.log(res.data);
+      })
+
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const Pluscount = () => {
     Setcount(count + 1);
@@ -57,7 +74,10 @@ const Card = ({ id, img, name, price, alt }) => {
             </svg>
           </button>
         </span>
-        <button className="w-full mt-5 bg-black text-white p-2 rounded cursor-pointer shadow">
+        <button
+          onClick={AddToCart}
+          className="w-full mt-5 bg-black text-white p-2 rounded cursor-pointer shadow"
+        >
           🛒 cart
         </button>
       </div>

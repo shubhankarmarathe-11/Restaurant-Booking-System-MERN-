@@ -81,7 +81,11 @@ const MenuCard = () => {
     }
   }, []);
   useEffect(() => {
-    GetFooItem();
+    console.log();
+
+    if (Object.keys(fooditems.fooditems).length === 0) {
+      GetFooItem();
+    }
   }, []);
 
   return (

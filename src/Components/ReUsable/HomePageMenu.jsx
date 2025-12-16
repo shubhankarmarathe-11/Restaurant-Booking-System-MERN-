@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Card } from "../ReUsable/Card";
 
 const HomePageMenu = ({ data }) => {
+  if (data == undefined) return null;
   return (
     <>
       <span className="flex flex-col flex-nowrap sm:justify-center">

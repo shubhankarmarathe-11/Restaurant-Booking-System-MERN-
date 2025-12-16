@@ -1,6 +1,7 @@
 import { Table } from "../models/TableDetails.js";
 import { Booking } from "../models/TableBooking.js";
 import { Fooditem } from "../models/FoodItem.js";
+import { Cartitem } from "../models/CartDetails.js";
 import { VerifyToken } from "../utils/JwtToken.js";
 
 const SendInfofun = async (req, res) => {
@@ -77,4 +78,37 @@ const Senditemdetail = async (req, res) => {
   }
 };
 
-export { SendInfofun, SendInfobookedtable, Senditemdetail };
+const SendCartItems = async (req, res) => {
+  try {
+    let token = req.cookies["host_auth"];
+    if (token == undefined) return res.status(401).send("please login");
+    let r = await VerifyToken(token);
+    if (r == null || r == false)
+      return res.status(400).send("token expired please login back");
+
+    let FetchData = await Cartitem.find({ UserDetail: r.data });
+    let arr = [];
+
+    arr.length = 0;
+    for (let j of FetchData[0].Fooditems) {
+      let findFood = await Fooditem.findById(j.Foodid);
+      arr.push({
+        _id: findFood._id,
+        FoodName: findFood.FoodName,
+        Price: findFood.Price,
+        ImageUrl: findFood.ImageUrl,
+        Quantity: j.Quantity,
+        selected: false,
+      });
+    }
+
+    if (arr.length == 0) return res.status(200).send("cartitems not found ");
+
+    res.status(201).send({ data: arr });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send("please try again");
+  }
+};
+
+export { SendInfofun, SendInfobookedtable, Senditemdetail, SendCartItems };

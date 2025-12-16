@@ -4,6 +4,6 @@ import { AddcartMiddleware } from "../Middlewares/AddcartMiddleware.js";
 
 const CartRoute = express.Router();
 
-CartRoute.post("/addcart", AddcartMiddleware, Addcartcontroller);
+CartRoute.post("/addtocart", AddcartMiddleware, Addcartcontroller);
 
 export { CartRoute };

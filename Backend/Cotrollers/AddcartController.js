@@ -1,28 +1,25 @@
 import { Cartitem } from "../models/CartDetails.js";
 import { Fooditem } from "../models/FoodItem.js";
 
-async function CountPrice(array) {
-  let price = 0;
-  for (let v of array) {
-    let FindPrice = await Fooditem.findById(v.Foodid);
-    price += await (FindPrice.Price * v.Quantity);
-  }
-  return price;
-}
+// async function CountPrice(array) {
+//   let price = 0;
+//   for (let v of array) {
+//     let FindPrice = await Fooditem.findById(v.Foodid);
+//     price += await (FindPrice.Price * v.Quantity);
+//   }
+//   return price;
+// }
 
 const Addcartcontroller = async (req, res) => {
   try {
-    let { cartarray } = req.body;
-    let userid = r.user_id;
+    let { Foodid, Quantity } = req.body;
 
-    let Cal = await CountPrice(cartarray);
+    let userid = req.user_id;
 
-    let NewEntry = await Cartitem.create({
-      Fooditems: cartarray,
-      UserDetail: userid,
-      Totalprice: Cal,
-    });
-    await NewEntry.save();
+    await Cartitem.findOneAndUpdate(
+      { UserDetail: userid },
+      { $push: { Fooditems: { Foodid: Foodid, Quantity: Quantity } } }
+    );
 
     res.status(200).send("Added to cart");
   } catch (error) {

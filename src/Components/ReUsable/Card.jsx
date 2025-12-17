@@ -1,10 +1,28 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
+import { UserDetails } from "../../Context/LoginContext";
+
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Card = ({ id, img, name, price, alt }) => {
   const [count, Setcount] = useState(1);
+  let userdetail = useContext(UserDetails);
 
   const AddToCart = async () => {
+    if (userdetail.user.isactive != true) {
+      return toast.error("Please login", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    }
     await axios
       .post(
         "/api/addtocart",
@@ -13,10 +31,32 @@ const Card = ({ id, img, name, price, alt }) => {
       )
       .then((res) => {
         console.log(res.data);
+        return toast.success(res.data, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       })
 
       .catch((err) => {
         console.log(err);
+        return toast.error(err.response.data, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       });
   };
 
@@ -30,6 +70,19 @@ const Card = ({ id, img, name, price, alt }) => {
   };
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <div
         key={id}
         className="cursor-pointer shadow-2xl bg-gray-50 sm:min-h-9/12 sm:max-h-9/12 min-w-72 max-w-72 flex flex-col justify-center  p-5 m-5 rounded-2xl hover:-translate-y-3 hover:transition-all"

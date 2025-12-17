@@ -38,7 +38,6 @@ const Home = () => {
   };
 
   const GetFooItem = async () => {
-    Setloading(true);
     axios
       .get("/api/getitems", { withCredentials: true })
       .then((res) => {
@@ -49,8 +48,7 @@ const Home = () => {
       })
       .catch((err) => {
         console.log(err);
-        Setloading(true);
-        GetFooItem();
+        Setloading(false);
       });
   };
 
@@ -62,6 +60,8 @@ const Home = () => {
   useEffect(() => {
     if (Object.keys(fooditems.fooditems).length === 0) {
       GetFooItem();
+    } else {
+      Setloading(false);
     }
   }, []);
 

@@ -73,7 +73,6 @@ const Cart = () => {
   };
 
   const GetcartItems = async () => {
-    Setloading(true);
     await axios
       .get("/api/getcartitems", { withCredentials: true })
       .then((res) => {

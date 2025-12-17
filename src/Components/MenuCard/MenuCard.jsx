@@ -72,6 +72,7 @@ const MenuCard = () => {
       .catch((err) => {
         console.log(err);
         Setloading(true);
+        GetFooItem();
       });
   };
 
@@ -85,6 +86,8 @@ const MenuCard = () => {
 
     if (Object.keys(fooditems.fooditems).length === 0) {
       GetFooItem();
+    } else {
+      Setloading(false);
     }
   }, []);
 
